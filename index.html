@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Calculator</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #4c6ef5, #15aabf);
+            font-family: "Poppins", sans-serif;
+        }
+
+        h1 {
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .calculator {
+            width: 360px;
+            background: #1c1c1c;
+            padding: 25px;
+            border-radius: 22px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border
+        }
+
+        #display {
+            width: 90%;
+            height: 90px;
+            border: none;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            padding: 20px;
+            font-size: 32px;
+            font-weight: 600;
+            text-align: right;
+            background: #333;
+            color: #fff;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        button {
+            padding: 20px;
+            border: none;
+            border-radius: 12px;
+            font-size: 22px;
+            font-weight: 500;
+            cursor: pointer;
+            background: #2e2e2e;
+            color: #fff;
+            transition: 0.2s ease-in-out;
+        }
+
+        button:hover {
+            background: #444;
+        }
+
+        .operator {
+            background: #ff922b !important;
+        }
+        .operator:hover {
+            background: #f76707 !important;
+        }
+
+        .equal {
+            background: #40c057 !important;
+            grid-column: span 2;
+        }
+        .equal:hover {
+            background: #2f9e44 !important;
+        }
+
+        .clear {
+            background: #e03131 !important;
+            grid-column: span 2;
+        }
+        .clear:hover {
+            background: #c92a2a !important;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Welcome to JENKINS</h1>
+
+<div class="calculator">
+    <input type="text" id="display" disabled>
+
+    <div class="grid">
+        <button onclick="press('7')">7</button>
+        <button onclick="press('8')">8</button>
+        <button onclick="press('9')">9</button>
+        <button class="operator" onclick="press('/')">÷</button>
+
+        <button onclick="press('4')">4</button>
+        <button onclick="press('5')">5</button>
+        <button onclick="press('6')">6</button>
+        <button class="operator" onclick="press('*')">×</button>
+
+        <button onclick="press('1')">1</button>
+        <button onclick="press('2')">2</button>
+        <button onclick="press('3')">3</button>
+        <button class="operator" onclick="press('-')">−</button>
+
+        <button onclick="press('0')">0</button>
+        <button onclick="press('.')">.</button>
+        <button class="operator" onclick="press('+')">+</button>
+
+        <button class="equal" onclick="calculate()">=</button>
+        <button class="clear" onclick="clearDisplay()">C</button>
+    </div>
+</div>
+
+<script>
+    const display = document.getElementById("display");
+
+    function press(value) {
+        display.value += value;
+    }
+
+    function calculate() {
+        try {
+            let result = eval(display.value);
+            display.value = result;
+        } catch {
+            display.value = "Error";
+        }
+    }
+
+    function clearDisplay() {
+        display.value = "";
+    }
+</script>
+
+</body>
+</html>
